@@ -67,7 +67,7 @@ fi
 source backup_WSL_config.sh
 LOG_PATH="${DRIVE_PATH}/${LOG_PATH}"
 DESTINATION_PATH="${DRIVE_PATH}/${DESTINATION_PATH}_${backup_letter}"
-PRETTY_DESTINATION_PATH=$(echo "${DESTINATION_PATH}" | sed 's#.*/##')
+PRETTY_DESTINATION_PATH=$(basename "${DESTINATION_PATH}")
 
 echo "Log path is: ${LOG_PATH}."
 SOURCE_PATH_CHECK="Source paths are:"
@@ -76,7 +76,7 @@ for SYNC_PATH in "${SYNC_PATHS[@]}"
 do
   FULL_SOURCE_PATH="${SOURCE_PATH}/${SYNC_PATH}"
   SOURCE_PATH_CHECK+=" ${FULL_SOURCE_PATH},"
-  FULL_DESTINATION_PATH=$(echo "${DESTINATION_PATH}/${SYNC_PATH}" | sed 's,/*[^/]\+/*$,,')
+  FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   DESTINATION_PATH_CHECK+=" ${FULL_DESTINATION_PATH},"
 done
@@ -101,7 +101,7 @@ mount -t drvfs E: "$DRIVE_PATH"
 for SYNC_PATH in "${SYNC_PATHS[@]}"
 do
   FULL_SOURCE_PATH="${SOURCE_PATH}/${SYNC_PATH}"
-  FULL_DESTINATION_PATH=$(echo "${DESTINATION_PATH}/${SYNC_PATH}" | sed 's,/*[^/]\+/*$,,')
+  FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   # --dry-run option can be added for testing purposes. In this case, nothing happens.
   rsync -azv --delete "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
