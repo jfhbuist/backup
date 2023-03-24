@@ -13,14 +13,14 @@ Then, remove "_template" from the file name.
 
 Next, open a unix terminal.  
 On Mac, this is the usual terminal, while on Windows, this is a WSL terminal.  
-Give the script permission to execute:
-```
-chmod +x backup_WSL.sh
-``` 
-And then run it. On Windows, the script needs to be run with sudo:
+Now, run the script. On Windows, the script needs to be run with sudo:
 ```
 sudo ./backup_WSL.sh
 ```
+For the first time, you may need to change the scripts permissions prior to running it:
+```
+chmod +x backup_WSL.sh
+``` 
 
 The script will now prompt the user for additional information on the destination path for the data.
 
