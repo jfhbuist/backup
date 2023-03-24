@@ -22,7 +22,7 @@ For the first time, you may need to change the scripts permissions prior to runn
 chmod +x backup_WSL.sh
 ``` 
 
-The script will now prompt the user for additional information on the destination path for the data.
+The script will prompt the user for additional information on the destination path for the data.
 
 The term "backup letter" refers to a staggered system, where backups are made to two different folders (A and B), in an alternating pattern.
 For example, today a backup could be made to folder A. 
