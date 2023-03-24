@@ -8,7 +8,10 @@ The other is for Windows, to be used within Windows Subsystem for Linux (WSL).
 ## Get started
 
 To get started, you will need to configure the relevant config file (for Mac or WSL) to match your file structure.  
-Then, open a unix terminal.  
+Fill in the locations of your data on your internal drive and on your external drive.  
+Then, remove '_template' from the file name.  
+
+Next, open a unix terminal.  
 On Mac, this is the usual terminal, while on Windows, this is a WSL terminal.  
 Give the script permission to execute:
 ```
