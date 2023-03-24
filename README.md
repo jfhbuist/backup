@@ -1,7 +1,7 @@
 # backup
 
 These are bash scripts for making a backup of data to an external hard drive.
-The scripts use the unix utility rsync.
+The scripts use the unix utility rsync.  
 One script is made for MacOS.
 The other is for Windows, to be used within Windows Subsystem for Linux (WSL).
 
