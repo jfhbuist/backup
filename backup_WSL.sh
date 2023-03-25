@@ -39,10 +39,22 @@ fi
 
 drive_letter=$(echo "$drive_letter" | tr '[:upper:]' '[:lower:]')
 DRIVE_PATH="/mnt/${drive_letter}"
-# If folder already exists, drive may already be mounted, and it may not be an external drive. 
-# In this case check for confirmation.
-mounted=false
+# Check if drive is already mounted
+if mountpoint -q /mnt/e; then
+  mounted=true
+else
+  mounted=false
+fi
+# Check if folder already exists
 if [ -d "$DRIVE_PATH" ]; then
+  folder_exists=true
+else
+  folder_exists=false
+fi
+
+# If drive is already mounted, it may not be an external drive.
+# In this case check for confirmation.
+if [ "$mounted" = true ]; then
   echo "External drive seems to be mounted already at path $DRIVE_PATH."
   echo -n "Are you sure this is the correct external drive? (Y/N): "
   read confirmation
@@ -50,7 +62,6 @@ if [ -d "$DRIVE_PATH" ]; then
     echo "Backup was aborted."
     exit 1
   fi
-  mounted=true
 fi
  
 # We have two backup versions, to be updated in a staggered manner. Ask which to update now.
