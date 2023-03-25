@@ -101,6 +101,7 @@ if !( [ "$confirmation" == "Y" ] || [ "$confirmation" == "y" ] ); then
 fi
 
 # mount drive (we need sudo for this)
+# only mount drive if it was not already mounted
 cd /
 if [ "$mounted" = false ]; then
   mkdir "$DRIVE_PATH"
@@ -123,8 +124,11 @@ echo "Backup of $PRETTY_DESTINATION_PATH made on $dt." >> "$LOG_PATH"
 echo "Backup of $PRETTY_DESTINATION_PATH finished at $dt."
 
 # unmount drive (we need sudo for this)
-umount "$DRIVE_PATH"
-rmdir "$DRIVE_PATH"
+# only unmount drive if it was not already mounted (before this script was run)
+if [ "$mounted" = false ]; then
+  umount "$DRIVE_PATH"
+  rmdir "$DRIVE_PATH"
+fi
 
 # Return to home
 cd ~
