@@ -54,7 +54,7 @@ fi
 
 # If drive is already mounted, it may not be an external drive.
 # In this case check for confirmation.
-if [ "$mounted" = true ]; then
+if [ "$mounted" = true ] || [ "$folder_exists" = true ]; then
   echo "External drive seems to be mounted already at path $DRIVE_PATH."
   echo -n "Are you sure this is the correct external drive? (Y/N): "
   read confirmation
@@ -63,7 +63,7 @@ if [ "$mounted" = true ]; then
     exit 1
   fi
 fi
- 
+
 # We have two backup versions, to be updated in a staggered manner. Ask which to update now.
 echo -n "Enter the backup letter (A/B) and press [ENTER]: "
 read backup_letter
@@ -114,7 +114,7 @@ fi
 # mount drive (we need sudo for this)
 # only mount drive if it was not already mounted
 cd /
-if [ "$mounted" = false ]; then
+if [ "$mounted" = false ] || [ "$folder_exists" = false ]; then
   mkdir "$DRIVE_PATH"
   mount -t drvfs E: "$DRIVE_PATH"
 fi
@@ -136,7 +136,7 @@ echo "Backup of $PRETTY_DESTINATION_PATH finished at $dt."
 
 # unmount drive (we need sudo for this)
 # only unmount drive if it was not already mounted (before this script was run)
-if [ "$mounted" = false ]; then
+if [ "$mounted" = false ] || [ "$folder_exists" = false ]; then
   umount "$DRIVE_PATH"
   rmdir "$DRIVE_PATH"
 fi
