@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script makes a backup of important folders using rsync to newest disk.
+# This script makes a backup of important folders to an external hard drive, using rsync.
 # Requires rsync.
 # Requires running with sudo.
 # All commands will be run with sudo, except those preceded by sudo -u $real_user.  

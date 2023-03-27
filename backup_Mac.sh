@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script makes a backup of important folders using rsync to newest disk.
+# This script makes a backup of important folders to an external hard drive, using rsync.
 # Requires rsync.
 
 echo "This script makes a backup of listed folders using rsync to an external hard drive."
