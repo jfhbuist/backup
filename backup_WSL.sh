@@ -125,7 +125,7 @@ do
   FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   # --dry-run option can be added for testing purposes. In this case, nothing happens.
-  rsync -azv --delete "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
+  rsync -azv --delete --exclude=".git/" "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
   sleep 5
 done
 
