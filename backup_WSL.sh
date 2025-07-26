@@ -125,7 +125,9 @@ do
   FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   # --dry-run option can be added for testing purposes. In this case, nothing happens.
-  rsync -azv --delete --exclude=".git/" "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
+  # Options --no-perms --no-owner --no-group are added to support NTFS file system
+  # Option --modify-window=1 could be added additionally to prevent unnecessary copying
+  rsync -avh --no-perms --no-owner --no-group --stats --delete --exclude=".*/" "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
   sleep 5
 done
 
