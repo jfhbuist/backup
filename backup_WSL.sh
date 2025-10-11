@@ -5,7 +5,6 @@
 # All commands will be run with sudo, except those preceded by sudo -u $real_user.  
 # This can be applied as a precaution.
 
-# ref: https://askubuntu.com/questions/425754/how-do-i-run-a-sudo-command-inside-a-script
 if ! [ $(id -u) = 0 ]; then
   echo "This script needs to be run with sudo." >&2
   exit 1
@@ -121,7 +120,7 @@ if [ "$folder_exists" = false ]; then
   mkdir "$DRIVE_PATH"
 fi
 if [ "$mounted" = false ]; then
-  mount -t drvfs E: "$DRIVE_PATH"
+  mount -t drvfs "${drive_letter}:" "$DRIVE_PATH"
 fi
 
 for SYNC_PATH in "${SYNC_PATHS[@]}"
