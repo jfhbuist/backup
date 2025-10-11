@@ -54,7 +54,7 @@ fi
 
 # If drive is already mounted, it may not be an external drive.
 # In this case check for confirmation.
-if [ "$mounted" = true ] || [ "$folder_exists" = true ]; then
+if [ "$mounted" = true ] && [ "$folder_exists" = true ]; then
   echo "External drive seems to be mounted already at path $DRIVE_PATH."
   echo -n "Are you sure this is the correct external drive? (Y/N): "
   read confirmation
@@ -62,6 +62,9 @@ if [ "$mounted" = true ] || [ "$folder_exists" = true ]; then
     echo "Backup was aborted."
     exit 1
   fi
+else
+  echo "External drive seems not to be mounted yet."
+  echo "It will be mounted at $DRIVE_PATH."
 fi
 
 # We have two backup versions, to be updated in a staggered manner. Ask which to update now.
