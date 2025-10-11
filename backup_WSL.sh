@@ -36,8 +36,9 @@ if ! ( [ "$confirmation" == "Y" ] || [ "$confirmation" == "y" ] ); then
   exit 1
 fi
 
-drive_letter=$(echo "$drive_letter" | tr '[:upper:]' '[:lower:]')
-DRIVE_PATH="/mnt/${drive_letter}"
+drive_letter_upper=$(echo "$drive_letter" | tr '[:lower:]' '[:upper:]')
+drive_letter_lower=$(echo "$drive_letter" | tr '[:upper:]' '[:lower:]')
+DRIVE_PATH="/mnt/${drive_letter_lower}"
 # Check if drive is already mounted
 if mountpoint -q /mnt/e; then
   mounted=true
@@ -120,7 +121,7 @@ if [ "$folder_exists" = false ]; then
   mkdir "$DRIVE_PATH"
 fi
 if [ "$mounted" = false ]; then
-  mount -t drvfs "${drive_letter}:" "$DRIVE_PATH"
+  mount -t drvfs "${drive_letter_upper}:" "$DRIVE_PATH"
 fi
 
 for SYNC_PATH in "${SYNC_PATHS[@]}"
