@@ -117,8 +117,10 @@ fi
 # mount drive (we need sudo for this)
 # only mount drive if it was not already mounted
 cd /
-if [ "$mounted" = false ] || [ "$folder_exists" = false ]; then
+if [ "$folder_exists" = false ]; then
   mkdir "$DRIVE_PATH"
+fi
+if [ "$mounted" = false ]; then
   mount -t drvfs E: "$DRIVE_PATH"
 fi
 
@@ -141,8 +143,11 @@ echo "Backup of $PRETTY_DESTINATION_PATH finished at $dt."
 
 # unmount drive (we need sudo for this)
 # only unmount drive if it was not already mounted (before this script was run)
-if [ "$mounted" = false ] || [ "$folder_exists" = false ]; then
+
+if [ "$mounted" = false ]; then
   umount "$DRIVE_PATH"
+fi
+if [ "$folder_exists" = false ]; then
   rmdir "$DRIVE_PATH"
 fi
 
