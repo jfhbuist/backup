@@ -54,7 +54,6 @@ else
   mounted=false
 fi
 
-
 # If drive is already mounted, it may not be an external drive.
 # In this case check for confirmation.
 if [ "$folder_exists" = true ] && [ "$mounted" = true ]; then
