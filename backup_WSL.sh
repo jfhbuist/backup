@@ -40,7 +40,7 @@ drive_letter_upper=$(echo "$drive_letter" | tr '[:lower:]' '[:upper:]')
 drive_letter_lower=$(echo "$drive_letter" | tr '[:upper:]' '[:lower:]')
 DRIVE_PATH="/mnt/${drive_letter_lower}"
 # Check if drive is already mounted
-if mountpoint -q /mnt/e; then
+if mountpoint -q "$DRIVE_PATH"; then
   mounted=true
 else
   mounted=false
