@@ -39,12 +39,7 @@ fi
 drive_letter_upper=$(echo "$drive_letter" | tr '[:lower:]' '[:upper:]')
 drive_letter_lower=$(echo "$drive_letter" | tr '[:upper:]' '[:lower:]')
 DRIVE_PATH="/mnt/${drive_letter_lower}"
-# Check if drive is already mounted
-if mountpoint -q "$DRIVE_PATH"; then
-  mounted=true
-else
-  mounted=false
-fi
+
 # Check if folder already exists
 if [ -d "$DRIVE_PATH" ]; then
   folder_exists=true
@@ -52,9 +47,17 @@ else
   folder_exists=false
 fi
 
+# Check if drive is already mounted
+if mountpoint -q "$DRIVE_PATH"; then
+  mounted=true
+else
+  mounted=false
+fi
+
+
 # If drive is already mounted, it may not be an external drive.
 # In this case check for confirmation.
-if [ "$mounted" = true ] && [ "$folder_exists" = true ]; then
+if [ "$folder_exists" = true ] && [ "$mounted" = true ]; then
   echo "External drive seems to be mounted already at path $DRIVE_PATH."
   echo -n "Are you sure this is the correct external drive? (Y/N): "
   read confirmation
