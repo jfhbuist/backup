@@ -11,9 +11,12 @@ To get started, you will need to configure the relevant config file (for Mac or 
 Fill in the locations of your data on your internal drive and on your external drive.  
 Then, remove "_template" from the file name.  
 
-Next, open a unix terminal.  
+Next, configure exclusions_template.txt to contain the folders you want to exclude from your backup.
+Like before, remove "_template" from the file name.
+
+Now, open a unix terminal.  
 On Mac, this is the usual terminal, while on Windows, this is a WSL terminal.  
-Now, run the script. On Windows, the script needs to be run with sudo:
+Finally, run the script. On Windows, the script needs to be run with sudo:
 ```
 sudo ./backup_WSL.sh
 ```

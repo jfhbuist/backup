@@ -118,7 +118,6 @@ fi
 
 # mount drive (we need sudo for this)
 # only mount drive if it was not already mounted
-cd /
 if [ "$folder_exists" = false ]; then
   mkdir "$DRIVE_PATH"
 fi
@@ -132,9 +131,7 @@ do
   FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   # --dry-run option can be added for testing purposes. In this case, nothing happens.
-  # Options --no-perms --no-owner --no-group are added to support NTFS file system
-  # Option --modify-window=1 could be added additionally to prevent unnecessary copying
-  rsync -avh --no-perms --no-owner --no-group --stats --delete --exclude=".*/" "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
+  sudo -u "$real_user" rsync -rltvh --stats --delete --exclude-from='exclusions.txt' "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
   sleep 5
 done
 
@@ -152,6 +149,3 @@ fi
 if [ "$folder_exists" = false ]; then
   rmdir "$DRIVE_PATH"
 fi
-
-# Return to home
-cd ~

@@ -1,4 +1,5 @@
 # .gitignore
 
 *_config.sh
+exclusions.txt
 scrap/
