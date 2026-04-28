@@ -131,7 +131,7 @@ do
   FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   # --dry-run option can be added for testing purposes. In this case, nothing happens.
-  sudo -u "$real_user" rsync -rltvh --stats --delete --exclude-from='exclusions.txt' "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
+  rsync -rltvh --stats --delete --exclude-from='exclusions.txt' "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
   sleep 5
 done
 
