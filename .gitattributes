@@ -1,2 +1,2 @@
-# All files are checked into the repo with LF. This is useful when developing on Windows.
-* text=auto
+# Automatically detect text files and give them LF line endings
+* text=auto eol=lf

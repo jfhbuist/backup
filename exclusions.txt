@@ -2,7 +2,15 @@
 # Items without a leading / are matched everywhere
 # Items with a leading / are matched at a fixed location relative to the DESTINATION_PATH
 # .*/
-.git/
-.venv/
 .vscode/
+.git/
+.vim/
 tmp/*
+.venv/
+.ipynb_checkpoints/
+.Rproj.user/
+.min/
+.pytest_cache/
+.devcontainer/
+.DS_Store
+desktop.ini
