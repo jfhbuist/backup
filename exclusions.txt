@@ -1,16 +1,24 @@
 # List of things to exclude
 # Items without a leading / are matched everywhere
 # Items with a leading / are matched at a fixed location relative to the DESTINATION_PATH
-# .*/
-.vscode/
-.git/
-.vim/
-tmp/*
-.venv/
-.ipynb_checkpoints/
-.Rproj.user/
-.min/
-.pytest_cache/
+__MACOSX/
+__pycache__/
+.coverage
 .devcontainer/
 .DS_Store
+.git/
+.ipynb_checkpoints/
+.min/
+.picasa.ini
+.plma
+.pytest_cache/
+.Rproj.user/
+.Trash-*/
+.venv/
+.vim/
+.vscode/
+*.swo
+*.swp
+*.trash.*/
 desktop.ini
+tmp/*
