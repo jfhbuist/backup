@@ -6,7 +6,6 @@ __pycache__/
 .coverage
 .devcontainer/
 .DS_Store
-.git/
 .ipynb_checkpoints/
 .min/
 .picasa.ini
@@ -16,9 +15,9 @@ __pycache__/
 .Trash-*/
 .venv/
 .vim/
-.vscode/
 *.swo
 *.swp
 *.trash.*/
 desktop.ini
 tmp/*
+ 

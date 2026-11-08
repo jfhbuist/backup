@@ -19,6 +19,8 @@ fi
 
 echo "This script makes a backup of listed folders using rsync to an external hard drive."
 
+echo "The backup will be run under username: $real_user"
+
 # Ask for the letter that the OS has given the external drive:
 echo -n "Enter the letter for the external drive (eg. E) and press [ENTER]: "
 read drive_letter
@@ -131,7 +133,7 @@ do
   FULL_DESTINATION_PATH=$(dirname "${DESTINATION_PATH}/${SYNC_PATH}")
   FULL_DESTINATION_PATH="${FULL_DESTINATION_PATH}/"
   # --dry-run option can be added for testing purposes. In this case, nothing happens.
-  rsync -rltvh --stats --delete --exclude-from='exclusions.txt' "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
+  sudo -u "$real_user" rsync -rltvhO --stats --delete --exclude-from='exclusions.txt' "$FULL_SOURCE_PATH" "$FULL_DESTINATION_PATH"
   sleep 5
 done
 
